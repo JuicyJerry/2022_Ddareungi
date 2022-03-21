@@ -1,0 +1,12 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" controller="Dareungi">
+    <aura:attribute name="ListOfData" type="String[]" default="[]" access="global" />
+    <!-- <p>Message of the day: {!v.message}</p> -->
+    <div>
+        <lightning:button variant="destructive" label="Get Data" title="Get Data Title" onclick="{!c.handleClick}" />
+    </div>
+    <ul class="slds-list--dotted">
+        <aura:iteration items="{!v.ListOfData}" var="data">
+            <li>{!data}</li>
+        </aura:iteration>
+    </ul>
+</aura:component>
