@@ -13,11 +13,18 @@
             // console.log("isValid & state: ", component.isValid(), state);
 
             if (component.isValid() && state === "SUCCESS") {
-                component.set("v.ListOfData", (response.getReturnValue()));
+                let returnValues = [];
+                for (let t of JSON.parse(response.getReturnValue())) {
+                    console.log(t);
+
+                    if (t['title'] !== '1') {
+                        returnValues.push(t['title']);
+                    }
+                }
+                component.set("v.ListOfData", (returnValues));
                 
                 let getAllData = component.get("v.ListOfData");
                 let DataList = [];
-                
                 for (let key in getAllData) {
                     console.log("key: ", key);
                     DataList.push(key + ' = ' + getAllData[key]);
