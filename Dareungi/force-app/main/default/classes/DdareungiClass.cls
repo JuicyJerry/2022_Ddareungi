@@ -1,27 +1,41 @@
-// with sharing : enforce sharing rules of the current user
-// Apex code which executeAnonymous call, connect in apex always execute sharing rules
-// Use shraing rules to extend sharing access to users in public groups, roles, or territories
 public with sharing class DdareungiClass { 
-    // this annotation enables client-and server-side access to an apex controller method (lightning components)
     @AuraEnabled 
-    // 자바 list 안에 데이터가 아닌 객체 일때 정렬
-    public static Map < String, Object > getCalloutResponseData(String url) {
-        // public static Map < String, Object > getCalloutResponseData(String url) {
-        Http h = new Http();
+    // public static Object[] getCalloutResponseData(String url){
+    public static String getCalloutResponseData(String url){
+        map<string,Object> resultsMap=new map<string,Object>();
+        String strResponse = null; 
 
-        HttpRequest req = new HttpRequest();
-        req.setEndpoint(url);
-        req.setMethod('GET');
+        if (string.isNotBlank(url)) {
+            HttpRequest req = new HttpRequest();
+            req.setEndpoint(url);
+            req.setMethod('GET');  
 
-        HttpResponse res = h.send(req);
+            try {
+                Http h = new Http();
+                HttpResponse res = h.send(req);
 
-        // console.log('response:--> ' + res.getBody());
-        System.debug('response:--> ' + res.getBody());
+                if (res.getStatusCode() == 200) {
+                    strResponse = res.getBody();
+                    System.debug('response!! --> ' + strResponse);
+                } else {
+                    throw new CalloutException(res.getBody());
+                }
+            } catch (Exception e) {
+                throw e;
+            }
+        }
 
-        Map < String, Object > resultsMap = (Map < String, Object > ) JSON.deserializeUntyped(res.getBody());
-        system.debug('resultsMap-->' + resultsMap);
 
-        return resultsMap;
+        // if (String.isNotBlank(strResponse)) {
+        //     resultsMap=JSON.deserializeUntyped(strResponse);
+        //     System.debug('resultsMap  -->' + resultsMap);
+        //     // return resultsMap;
+        // } else {
+        //     System.debug('undefined, try again!');
+        //   }
+          
+          return strResponse;
+          // return strResponse;
     }
     
 }

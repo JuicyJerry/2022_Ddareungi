@@ -10,18 +10,17 @@
 
         action.setCallback(this, function(response) {
             let state = response.getState();
-            console.log(component.isValid(), state);
+            // console.log("isValid & state: ", component.isValid(), state);
 
             if (component.isValid() && state === "SUCCESS") {
-                console.log('success');
+                component.set("v.ListOfData", (response.getReturnValue()));
                 
-                component.set("v.response", response.getReturnValue());
-                
-                let getAllRates = component.get("v.response")['rates'];
+                let getAllData = component.get("v.ListOfData");
                 let DataList = [];
                 
-                for (let key in getAllRates) {
-                    DataList.push(key + ' = ' + getAllRates[key]);
+                for (let key in getAllData) {
+                    console.log("key: ", key);
+                    DataList.push(key + ' = ' + getAllData[key]);
                 }
                 
                 component.set("v.ListOfCurrency", DataList);
