@@ -8,62 +8,120 @@
                 <p class="slds-text-title_caps slds-line-height_reset">Ddaruengi</p>
                 <h1 class="slds-page-header__title slds-m-right_small slds-align-middle slds-truncate" title="따릉따릉, 따릉이 홈페이지입니다">따릉따릉, 따릉이 홈페이지입니다</h1>
             </div>
-            <!-- ACTION BUTTONS -->
         </div>
-        <!-- PAGE HEADER DETAIL ROW -->
     </div>
-    <!-- / PAGE HEADER -->
 
 
-    <div class="slds-carousel">
-        <div class="slds-carousel__state">
+    <div class="slds-carousel carouselWrapper">
+        <div class="slds-carousel__stage">
             <span class="slds-carousel__autoplay">
                 <button class="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small" aria-pressed="false" title="Stop auto-play">
-                    <lightning:icon iconName="utility:success" />
-                    <lightning:buttonIcon iconName="utility:success" alternativeText="success" />
+                    <!-- <lightning:icon iconName="utility:success" />
+                    <lightning:buttonIcon iconName="utility:success" alternativeText="success" /> -->
                     <span class="slds-assistive-text">Stop auto-play</span>
                 </button>
             </span>
 
-            <div class="slds-carousel__pannels" style="transform:translateX(-0%)">
-                <div id="content-id-67" class="slds-carousel__panel" role="tabpanel" aria-hidden="false" aria-labelledby="indicator-id-70">
+            <div class="slds-carousel__panels" style="transform:translateX(-0%)">
+                <div id="content-id-115" class="slds-carousel__panel" role="tabpanel" aria-hidden="false" aria-labelledby="indicator-id-118">
                     <a href="#" class="slds-carousel__panel-action slds-text-link_reset" tabindex="0">
                         <div class="slds-carousel__image">
-                            <img src="{!$Resource.carousel_01_Ddareungi}" alt="Visit App Exchange" />
+                            <img src="{!$Resource.carousel_01_Ddareungi}" class="carousel_img" alt="Visit App Exchange" />
                         </div>
 
                         <div class="slds-carousel__content">
                             <h2 class="slds-carousel__content-title">Visit App Exchange</h2>
-                            <p>Extend Salesforce with the #1 business marketplace.</p>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                         </div>
                     </a>
                 </div>
 
+                <div id="content-id-116" class="slds-carousel__panel" role="tabpanel" aria-hidden="false" aria-labelledby="indicator-id-119">
+                    <a href="#" class="slds-carousel__panel-action slds-text-link_reset" tabindex="-1">
+                        <div class="slds-carousel__image">
+                            <img src="{!$Resource.carousel_02_MangWon}" class="carousel_img"  alt="Visit App Exchange" />
+                        </div>
 
+                        <div class="slds-carousel__content">
+                            <h2 class="slds-carousel__content-title">Visit App Exchange</h2>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                        </div>
+                    </a>
+                </div>
+                
+                <div id="content-id-117" class="slds-carousel__panel" role="tabpanel" aria-hidden="false" aria-labelledby="indicator-id-120">
+                    <a href="#" class="slds-carousel__panel-action slds-text-link_reset" tabindex="-1">
+                        <div class="slds-carousel__image">
+                            <img src="{!$Resource.carousel_03_HapJeong}" class="carousel_img"  alt="Visit App Exchange" />
+                        </div>
 
+                        <div class="slds-carousel__content">
+                            <h2 class="slds-carousel__content-title">Visit App Exchange</h2>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                        </div>
+                    </a>
+                </div>
+                
             </div>
+
+            <ul class="slds-carousel__indicators" role="tablist">
+                <li class="slds-carousel__indicator" role="presentation">
+                    <a id="indicator-id-118" class="slds-carousel__indicator-action slds-is-active" href="#" role="tab" tabindex="0" aria-selected="true" aria-controls="content-id-115" title="Visit App Exchange tab">
+                        <span class="slds-assistive-text">Visit App Exchange tab</span>
+                    </a>
+                </li>
+        
+                <li class="slds-carousel__indicator" role="presentation">
+                    <a id="indicator-id-119" class="slds-carousel__indicator-action slds-is-active" href="#" role="tab" tabindex="-1" aria-selected="false" aria-controls="content-id-116" title="Visit App Exchange tab">
+                        <span class="slds-assistive-text">Visit App Exchange tab</span>
+                    </a>
+                </li>
+        
+                <li class="slds-carousel__indicator" role="presentation">
+                    <a id="indicator-id-120" class="slds-carousel__indicator-action slds-is-active" href="#" role="tab" tabindex="-1" aria-selected="false" aria-controls="content-id-117" title="Visit App Exchange tab">
+                        <span class="slds-assistive-text">Visit App Exchange tab</span>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 
-    <div>
-        <lightning:button variant="brand" label="Get Data" title="Get Data Title" onclick="{!c.handleClick}" />
+    <div class="c-container">
+        <lightning:layout multipleRows="true">
+            <lightning:layoutItem padding="around-small" size="12">
+                <h1 class="slds-page-header__title slds-m-right_small slds-align-middle slds-truncate" title="내 동네에 따릉이를 검색해보세요!">내 동네에 따릉이를 검색해보세요!</h1>
+
+                <lightning:layout horizontalAlign="center">
+                    <!-- <div onkeyup="{!c.handleKeyUp}"> -->
+                    <div onchange="{!c.handleChange}">
+                        <lightning:input
+                            aura:id="enter-search"
+                            name="enter-search"
+                            label="Search when user hits the 'enter' key"
+                            type="search"
+                            style="width: 80vw;"
+                            value="망원역, 합정역"
+                        />
+                    </div>
+    
+                    <lightning:button variant="brand" label="Get Data" title="Get Data Title" onclick="{!c.handleClick}" />
+                </lightning:layout>
+
+            <!--
+                the place of search result;contents
+                ...
+            -->
+
+            </lightning:layoutItem>
+        </lightning:layout>
     </div>
-    <ul class="slds-list-dotted">
+
+    <ul class="slds-list-dotted resultDataList">
         <aura:iteration items="{!v.ListOfData}" var="data">
-            <li class="listComponent">{!data}</li>
+            <li>{!data}</li>
         </aura:iteration>
     </ul>
 
-    <div class="slds-button_brand">
-        <lightning:buttonGroup>
-            <lightning:button iconName="utility:anchor" variant="brand" onclick="{!c.handleClickBtn}"
-                label="{!stations}" />
-            <aura:iteration items="{!v.ListOfStations}" var="stations">
-                <lightning:button iconName="utility:anchor" variant="brand" onclick="{!c.handleClickBtn}"
-                    label="{!stations}" />
-            </aura:iteration>
-        </lightning:buttonGroup>
-    </div>
 
     <!-- <button class="slds-button slds-button_icon slds-button_icon-inverse" title="Search">
         <svg class="slds-button__icon" aria-hidden="true">

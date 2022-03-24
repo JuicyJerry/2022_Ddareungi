@@ -2,21 +2,20 @@
     /* background-color: black; */
 }
 
-.THIS .listComponent {
+.THIS.resultDataList {
     /* background-color: red; */
+    color: red;
     list-style-type: none;
+    padding: 55px;
+    /* margin-bottom: 100px; */
 }
-/* .THIS .slds-button_brand {
-    padding-left: var(--sds-c-button-brand-spacing-inline-start,1rem);
-    padding-right: var(--sds-c-button-brand-spacing-inline-end,1rem);
-    text-align: center;
-    vertical-align: middle;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-transition: border .15s linear;
-    transition: border .15s linear;
-    background-color: var(--sds-c-button-brand-color-background,#0176d3);
-    border-color: var(--sds-c-button-brand-color-border,#0176d3);
-    color: var(--sds-c-button-brand-text-color,#fff);
-} */
+
+.THIS.carouselWrapper {
+    border: 3px solid seagreen;
+    margin-bottom: 120px;
+    padding: 50px;
+}
+.THIS.carousel_img {
+    border: 3px solid red;
+    padding: 50px;
+}
