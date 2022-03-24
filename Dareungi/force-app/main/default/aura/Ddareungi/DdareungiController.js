@@ -7,3 +7,8 @@
         helper.getResponse(component, apiKey);
     }
 })
+({
+    handleClickBtn: function(component, event, helper) {
+        alert("click!")
+    }    
+})
