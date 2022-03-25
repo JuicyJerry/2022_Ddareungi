@@ -1,7 +1,15 @@
 <aura:component implements="flexipage:availableForAllPageTypes" access="global" controller="DdareungiClass">
-    <aura:attribute name="ListOfData" type="String[]" default="[]" access="global" />
-    <aura:attribute name="ListOfStations" type="String[]" default="[]" access="global" />
+    <!-- attribute --> 
+    <aura:attribute name="ListOfData" type="List" access="global" />
     <aura:attribute name="textValue" type="String" default="역 이름을 검색해보세요   ex) 망원역" />
+    
+    <aura:attribute name="ractTotCntValueInData" type="String[]" default="[]" access="global" />
+    <aura:attribute name="stationNameValueInData" type="String[]" default="[]" access="global" />
+    <aura:attribute name="parkingBikeTotCntValueInData" type="String[]" default="[]" access="global" />
+    <aura:attribute name="sharedValueInData" type="String[]" default="[]" access="global" />
+    <aura:attribute name="stationLatitudeValueInData" type="String[]" default="[]" access="global" />
+    <aura:attribute name="stationLongitudeValueInData" type="String[]" default="[]" access="global" />
+    <aura:attribute name="stationIdValueInData" type="String[]" default="[]" access="global" />
 
     <div class="slds-page-header">
         <div class="slds-grid">
@@ -117,8 +125,16 @@
     </div>
 
     <ul class="slds-list-dotted resultDataList">
-        <aura:iteration items="{!v.ListOfStations}" var="data">
-            <li>{!data}</li>
+        <aura:iteration items="{!v.ListOfData}" var="data">
+            <li>
+                <p>거치대개수: {!data.rackTotCnt}</p>
+                <p>대여소이름: {!data.stationName}</p>
+                <p>자전거주차총건수: {!data.parkingBikeTotCnt}</p>
+                <p>거치율: {!data.shared}</p>
+                <p>위도: {!data.stationLatitude}</p>
+                <p>경도: {!data.stationLongitude}</p>
+                <p>대여소ID: {!data.stationId}</p>
+            </li>
         </aura:iteration>
     </ul>
 
