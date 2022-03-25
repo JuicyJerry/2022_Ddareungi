@@ -1,6 +1,7 @@
 <aura:component implements="flexipage:availableForAllPageTypes" access="global" controller="DdareungiClass">
     <aura:attribute name="ListOfData" type="String[]" default="[]" access="global" />
     <aura:attribute name="ListOfStations" type="String[]" default="[]" access="global" />
+    <aura:attribute name="textValue" type="String" default="역 이름을 검색해보세요   ex) 망원역" />
 
     <div class="slds-page-header">
         <div class="slds-grid">
@@ -93,16 +94,15 @@
 
                 <lightning:layout horizontalAlign="center">
                     <!-- <div onkeyup="{!c.handleKeyUp}"> -->
-                    <div onchange="{!c.handleChange}">
-                        <lightning:input
-                            aura:id="enter-search"
-                            name="enter-search"
-                            label="Search when user hits the 'enter' key"
-                            type="search"
-                            style="width: 80vw;"
-                            value="망원역, 합정역"
-                        />
-                    </div>
+                    <lightning:input
+                        aura:id="enter-search"
+                        type="search"
+                        value="{!v.textValue}"
+                        label="Search when user hits the 'enter' key"
+                        style="width: 80vw;"
+                        onchange="{!c.handleChange}"
+                        onfocus="{!c.handleFocus}"
+                    />
     
                     <lightning:button variant="brand" label="Get Data" title="Get Data Title" onclick="{!c.handleClick}" />
                 </lightning:layout>
@@ -117,7 +117,7 @@
     </div>
 
     <ul class="slds-list-dotted resultDataList">
-        <aura:iteration items="{!v.ListOfData}" var="data">
+        <aura:iteration items="{!v.ListOfStations}" var="data">
             <li>{!data}</li>
         </aura:iteration>
     </ul>
