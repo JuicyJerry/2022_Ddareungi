@@ -1,5 +1,4 @@
 <aura:component implements="flexipage:availableForAllPageTypes" access="global" controller="DdareungiClass">
-    <!-- attribute --> 
     <aura:attribute name="ListOfData" type="List" access="global" />
     <aura:attribute name="textValue" type="String" default="역 이름을 검색해보세요   ex) 망원역" />
     
@@ -50,14 +49,6 @@
     <!-- carousel -->
     <div class="slds-carousel carouselWrapper">
         <div class="slds-carousel__stage">
-            <span class="slds-carousel__autoplay">
-                <!-- <button class="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small" aria-pressed="false" title="Stop auto-play"> -->
-                    <!-- <lightning:icon iconName="utility:success" />
-                    <lightning:buttonIcon iconName="utility:success" alternativeText="success" /> -->
-                    <!-- <span class="slds-assistive-text">Stop auto-play</span> -->
-                <!-- </button> -->
-            </span>
-
             <div class="slds-carousel__panels" style="width: 15vw; margin: 0 auto; padding: 15px; transform:translateX(-0%);  border: 3px solid black; background-color: white">
                 <div id="content-id-115" class="slds-carousel__panel" role="tabpanel" aria-hidden="false" aria-labelledby="indicator-id-118">
                     <a href="#" class="slds-carousel__panel-action slds-text-link_reset" style="border: 0;" tabindex="0">
@@ -72,48 +63,9 @@
                         </div>
                     </a>
                 </div>
-
-                <!-- <div id="content-id-116" class="slds-carousel__panel" role="tabpanel" aria-hidden="false" aria-labelledby="indicator-id-119">
-                    <a href="#" class="slds-carousel__panel-action slds-text-link_reset" tabindex="-1">
-                        <div class="slds-carousel__image">
-                            <img src="{!$Resource.carousel_02_MangWon}" class="carousel_img"  alt="Visit App Exchange" />
-                        </div>
-
-                        <div class="slds-carousel__content">
-                            <h2 class="slds-carousel__content-title">Visit App Exchange</h2>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                        </div>
-                    </a>
-                </div>
-                
-                <div id="content-id-117" class="slds-carousel__panel" role="tabpanel" aria-hidden="false" aria-labelledby="indicator-id-120">
-                    <a href="#" class="slds-carousel__panel-action slds-text-link_reset" tabindex="-1">
-                        <div class="slds-carousel__image">
-                            <img src="{!$Resource.carousel_03_HapJeong}" class="carousel_img"  alt="Visit App Exchange" />
-                        </div>
-
-                        <div class="slds-carousel__content">
-                            <h2 class="slds-carousel__content-title">Visit App Exchange</h2>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                        </div>
-                    </a>
-                </div>
-                 -->
             </div>
 
             <ul class="slds-carousel__indicators" role="tablist">
-                <li class="slds-carousel__indicator" role="presentation">
-                    <a id="indicator-id-118" class="slds-carousel__indicator-action slds-is-active" href="#" role="tab" tabindex="0" aria-selected="true" aria-controls="content-id-115" title="Visit App Exchange tab">
-                        <span class="slds-assistive-text">Visit App Exchange tab</span>
-                    </a>
-                </li>
-        
-                <li class="slds-carousel__indicator" role="presentation">
-                    <a id="indicator-id-119" class="slds-carousel__indicator-action slds-is-active" href="#" role="tab" tabindex="-1" aria-selected="false" aria-controls="content-id-116" title="Visit App Exchange tab">
-                        <span class="slds-assistive-text">Visit App Exchange tab</span>
-                    </a>
-                </li>
-        
                 <li class="slds-carousel__indicator" role="presentation">
                     <a id="indicator-id-120" class="slds-carousel__indicator-action slds-is-active" href="#" role="tab" tabindex="-1" aria-selected="false" aria-controls="content-id-117" title="Visit App Exchange tab">
                         <span class="slds-assistive-text">Visit App Exchange tab</span>
@@ -134,7 +86,6 @@
                         <h1 class="slds-page-header__title" title="내 동네에 따릉이를 검색해보세요!">내 동네에 따릉이를 검색해보세요!</h1>
 
                         <lightning:layout horizontalAlign="center">
-                            <!-- <div onkeyup="{!c.handleKeyUp}"> -->
                             <lightning:input
                                 aura:id="enter-search"
                                 type="search"
@@ -154,7 +105,6 @@
         </div>
 
         <aura:if isTrue="{!v.ListOfData}" >
-            <!--비동기 핸들러를 이용하여 자동으로 spinner function 실행시키기!!!!!!-->
             <aura:iteration items="{!v.ListOfData}" var="data" indexVar="idx">
                     <ul class="slds-has-dividers_bottom-space">
                         <li class="slds-item">
@@ -163,7 +113,6 @@
                                     <lightning:avatar src="./assets/images/tile/avatar1.jpg" fallbackIconName="standard:person_account" alternativeText="Lee" />
                                 </aura:set>
                 
-                                <!-- <ul class="slds-list_horizontal"> -->
                                 <ul class="slds-list">
                                     <li class="slds-item" style="list-style-type: circle; padding: 16px">
                                         <p>
@@ -204,7 +153,6 @@
                             </lightning:tile>
                         </li>
                     </ul>
-
                 </aura:iteration>
 
             <aura:set attribute="else">
@@ -220,11 +168,4 @@
             <p class="slds-col">&copy; juicyjerry</p>
         </div>
     </footer>
-
-    <!-- <button class="slds-button slds-button_icon slds-button_icon-inverse" title="Search">
-        <svg class="slds-button__icon" aria-hidden="true">
-          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
-        </svg>
-        <span class="slds-assistive-text">Search</span>
-      </button> -->
 </aura:component>

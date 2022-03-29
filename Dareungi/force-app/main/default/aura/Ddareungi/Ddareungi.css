@@ -1,12 +1,7 @@
-.THIS {
-    /* background-color: black; */
-}
-
 .THIS.resultDataList {
     color: red;
     list-style-type: none;
     padding: 55px;
-    /* margin-bottom: 100px; */
 }
 
 .THIS.carouselWrapper {
