@@ -25,6 +25,6 @@
                 console.log("state Error");
             }
         })
-        $A.enqueueAction(action);
+        $A.enqueueAction(request);
     }
 })
