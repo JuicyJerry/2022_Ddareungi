@@ -10,14 +10,16 @@
     <aura:attribute name="stationLatitudeValueInData" type="String[]" default="[]" access="global" />
     <aura:attribute name="stationLongitudeValueInData" type="String[]" default="[]" access="global" />
     <aura:attribute name="stationIdValueInData" type="String[]" default="[]" access="global" />
-
-
     
-    <aura:attribute name="spinner" type="boolean" default="FALSE" />
+    <aura:attribute name="spinner" type="boolean" default="FALSE"/>
+    <aura:attribute name="accListToDisplay" type="Account[]" />
+
+    <aura:handler event="aura:waiting" action="{!c.showSpinner}"/>
+    <aura:handler event="aura:doneWaiting" action="{!c.hideSpinner}"/>
 
     <aura:if isTrue="{!v.spinner}">
         <div aura:id="spinnerId" class="slds-spinner_container">
-            <div class="slds-spinner--brand slds-spinner slds-spinner--large slds-is-relative" role="alert">
+            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
                 <span class="slds-assistive-text">Loading...</span>
                 <div class="slds-spinner__dot-a"></div>
                 <div class="slds-spinner__dot-b"></div>
@@ -25,12 +27,21 @@
         </div>
     </aura:if>
 
+    <!--Top Header-->
+    <header role="contentinfo" class="slds-p-around_large" style="width: 100%; top:0; position: relative; background-color: black;">
+        <div class="slds-grid">
+            <p class="slds-col" style="text-align: center; color:white; font-size: 13px; text-shadow: none;">                                                                        
+                Join us for a free Product Design workshop on Monday, April 4th and get a taste of what you'll learn in our certified Product Design course. Sign up for free today!
+            </p>
+        </div>
+    </header>
+
     <!-- header -->
-    <div class="slds-page-header">
+    <div class="slds-page-header" style="background-color: white;">
         <div class="slds-grid">
             <div class="slds-col slds-has-flexi-truncate">
-                <p class="slds-text-title_caps slds-line-height_reset">Ddaruengi</p>
-                <h1 class="slds-page-header__title slds-m-right_small slds-align-middle slds-truncate" title="따릉따릉, 따릉이 홈페이지입니다">따릉따릉, 따릉이 홈페이지입니다</h1>
+                <p class="slds-text-title_caps slds-line-height_reset">안전 수칙을 꼭 지켜주세요!</p>
+                <h1 class="slds-page-header__title slds-m-right_small slds-align-middle slds-truncate" title="따릉따릉, 따릉이 홈페이지입니다">따릉따릉, 따릉이 대여소 조회 서비스입니다🚲🚲🚲</h1>
             </div>
         </div>
     </div>
@@ -40,28 +51,29 @@
     <div class="slds-carousel carouselWrapper">
         <div class="slds-carousel__stage">
             <span class="slds-carousel__autoplay">
-                <button class="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small" aria-pressed="false" title="Stop auto-play">
+                <!-- <button class="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small" aria-pressed="false" title="Stop auto-play"> -->
                     <!-- <lightning:icon iconName="utility:success" />
                     <lightning:buttonIcon iconName="utility:success" alternativeText="success" /> -->
-                    <span class="slds-assistive-text">Stop auto-play</span>
-                </button>
+                    <!-- <span class="slds-assistive-text">Stop auto-play</span> -->
+                <!-- </button> -->
             </span>
 
-            <div class="slds-carousel__panels" style="transform:translateX(-0%)">
+            <div class="slds-carousel__panels" style="width: 15vw; margin: 0 auto; padding: 15px; transform:translateX(-0%);  border: 3px solid black; background-color: white">
                 <div id="content-id-115" class="slds-carousel__panel" role="tabpanel" aria-hidden="false" aria-labelledby="indicator-id-118">
-                    <a href="#" class="slds-carousel__panel-action slds-text-link_reset" tabindex="0">
+                    <a href="#" class="slds-carousel__panel-action slds-text-link_reset" style="border: 0;" tabindex="0">
                         <div class="slds-carousel__image">
                             <img src="{!$Resource.carousel_01_Ddareungi}" class="carousel_img" alt="Visit App Exchange" />
                         </div>
 
                         <div class="slds-carousel__content">
-                            <h2 class="slds-carousel__content-title">Visit App Exchange</h2>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <h2 class="slds-carousel__content-title">세계적인 자전거도시 "서울"</h2>
+                            <br />
+                            <p>서울 무인 자전거 따릉이를 대여 및 반납할 수 있는 무인 정류장 대여소를 검색해보세요!</p>
                         </div>
                     </a>
                 </div>
 
-                <div id="content-id-116" class="slds-carousel__panel" role="tabpanel" aria-hidden="false" aria-labelledby="indicator-id-119">
+                <!-- <div id="content-id-116" class="slds-carousel__panel" role="tabpanel" aria-hidden="false" aria-labelledby="indicator-id-119">
                     <a href="#" class="slds-carousel__panel-action slds-text-link_reset" tabindex="-1">
                         <div class="slds-carousel__image">
                             <img src="{!$Resource.carousel_02_MangWon}" class="carousel_img"  alt="Visit App Exchange" />
@@ -86,7 +98,7 @@
                         </div>
                     </a>
                 </div>
-                
+                 -->
             </div>
 
             <ul class="slds-carousel__indicators" role="tablist">
@@ -112,93 +124,102 @@
     </div>
 
 
+
     <!-- contents -->
-    <div class="c-container">
-        <lightning:layout multipleRows="true">
-            <lightning:layoutItem padding="around-small" size="12">
-                <h1 class="slds-page-header__title slds-m-right_small slds-align-middle slds-truncate" title="내 동네에 따릉이를 검색해보세요!">내 동네에 따릉이를 검색해보세요!</h1>
+    <div class="body" style="height: 100%;">
+        <div class="c-container">
+            <div>
+                <lightning:layout multipleRows="true">
+                    <lightning:layoutItem padding="around-small" size="12">
+                        <h1 class="slds-page-header__title" title="내 동네에 따릉이를 검색해보세요!">내 동네에 따릉이를 검색해보세요!</h1>
 
-                <lightning:layout horizontalAlign="center">
-                    <!-- <div onkeyup="{!c.handleKeyUp}"> -->
-                    <lightning:input
-                        aura:id="enter-search"
-                        type="search"
-                        value="{!v.textValue}"
-                        label="Search when user hits the 'enter' key"
-                        style="width: 80vw; padding: 16px;"
-                        onchange="{!c.handleChange}"
-                        onfocus="{!c.handleFocus}"
-                    />
-    
-                    <lightning:button variant="brand" label="Get Data" title="Get Data Title" onclick="{!c.handleClick}" />
+                        <lightning:layout horizontalAlign="center">
+                            <!-- <div onkeyup="{!c.handleKeyUp}"> -->
+                            <lightning:input
+                                aura:id="enter-search"
+                                type="search"
+                                value="{!v.textValue}"
+                                label="Search when user hits the 'enter' key"
+                                style="width: 80vw; padding: 16px;"
+                                onchange="{!c.handleChange}"
+                                onfocus="{!c.handleFocus}"
+                            />
+            
+                            <lightning:button variant="brand" label="SEARCH" title="Get Data Title" onclick="{!c.handleClick}" />
+                        </lightning:layout>
+
+                    </lightning:layoutItem>
                 </lightning:layout>
+            </div>
+        </div>
 
-            </lightning:layoutItem>
-        </lightning:layout>
+        <aura:if isTrue="{!v.ListOfData}" >
+            <!--비동기 핸들러를 이용하여 자동으로 spinner function 실행시키기!!!!!!-->
+            <aura:iteration items="{!v.ListOfData}" var="data" indexVar="idx">
+                    <ul class="slds-has-dividers_bottom-space">
+                        <li class="slds-item">
+                            <lightning:tile label="{!(v.textValue) + ': ' + (idx + 1) + '번째 ' + '정거장'}" href="juicyjerry@tistory.com">
+                                <aura:set attribute="media">
+                                    <lightning:avatar src="./assets/images/tile/avatar1.jpg" fallbackIconName="standard:person_account" alternativeText="Lee" />
+                                </aura:set>
+                
+                                <!-- <ul class="slds-list_horizontal"> -->
+                                <ul class="slds-list">
+                                    <li class="slds-item" style="list-style-type: circle; padding: 16px">
+                                        <p>
+                                            <b>거치대개수</b>&ensp;&ensp;{!data.rackTotCnt}
+                                        </p>
+                                    </li>
+                                    <li class="slds-item" style="list-style-type: circle; padding: 16px">
+                                        <p>
+                                            <b>대여소이름</b>&ensp;&ensp;{!data.stationName}
+                                        </p>
+                                    </li>
+                                    <li class="slds-item" style="list-style-type: circle; padding: 16px">
+                                        <p>
+                                            <b>자전거주차총건수</b>&ensp;&ensp;{!data.parkingBikeTotCnt}
+                                        </p>
+                                    </li>
+                                    <li class="slds-item" style="list-style-type: circle; padding: 16px">
+                                        <p>
+                                            <b>거치율</b>&ensp;&ensp;{!data.shared}
+                                        </p>
+                                    </li>
+                                    <li class="slds-item" style="list-style-type: circle; padding: 16px">
+                                        <p>
+                                            <b>위도</b>&ensp;&ensp;{!data.stationLatitude}
+                                        </p>
+                                    </li>
+                                    <li class="slds-item" style="list-style-type: circle; padding: 16px">
+                                        <p>
+                                            <b>경도</b>&ensp;&ensp;{!data.stationLongitude}
+                                        </p>
+                                    </li>
+                                    <li class="slds-item" style="list-style-type: circle; padding: 16px">
+                                        <p>
+                                            <b>대여소ID</b>&ensp;&ensp;{!data.stationId}
+                                        </p>
+                                    </li>
+                                </ul>
+                            </lightning:tile>
+                        </li>
+                    </ul>
+
+                </aura:iteration>
+
+            <aura:set attribute="else">
+                <p> There are problem in here.</p>
+            </aura:set>
+        </aura:if>
     </div>
 
-
-    <aura:if isTrue="{!v.ListOfData}">
-        <!--비동기 핸들러를 이용하여 자동으로 spinner function 실행시키기!!!!!!-->
-
-        <aura:iteration items="{!v.ListOfData}" var="data" indexVar="idx">
-                <ul class="slds-has-dividers_bottom-space">
-                    <li class="slds-item">
-                        <lightning:tile label="{!(v.textValue) + ': ' + (idx + 1) + '번째 ' + '정거장'}" href="juicyjerry@tistory.com">
-                            <aura:set attribute="media">
-                                <lightning:avatar src="./assets/images/tile/avatar1.jpg" fallbackIconName="standard:person_account" alternativeText="Lee" />
-                            </aura:set>
-            
-                            <!-- <ul class="slds-list_horizontal"> -->
-                            <ul class="slds-list">
-                                <li class="slds-item" style="list-style-type: circle; padding: 16px">
-                                    <p>
-                                        <b>거치대개수</b>&ensp;&ensp;{!data.rackTotCnt}
-                                    </p>
-                                </li>
-                                <li class="slds-item" style="list-style-type: circle; padding: 16px">
-                                    <p>
-                                        <b>대여소이름</b>&ensp;&ensp;{!data.stationName}
-                                    </p>
-                                </li>
-                                <li class="slds-item" style="list-style-type: circle; padding: 16px">
-                                    <p>
-                                        <b>자전거주차총건수</b>&ensp;&ensp;{!data.parkingBikeTotCnt}
-                                    </p>
-                                </li>
-                                <li class="slds-item" style="list-style-type: circle; padding: 16px">
-                                    <p>
-                                        <b>거치율</b>&ensp;&ensp;{!data.shared}
-                                    </p>
-                                </li>
-                                <li class="slds-item" style="list-style-type: circle; padding: 16px">
-                                    <p>
-                                        <b>위도</b>&ensp;&ensp;{!data.stationLatitude}
-                                    </p>
-                                </li>
-                                <li class="slds-item" style="list-style-type: circle; padding: 16px">
-                                    <p>
-                                        <b>경도</b>&ensp;&ensp;{!data.stationLongitude}
-                                    </p>
-                                </li>
-                                <li class="slds-item" style="list-style-type: circle; padding: 16px">
-                                    <p>
-                                        <b>대여소ID</b>&ensp;&ensp;{!data.stationId}
-                                    </p>
-                                </li>
-                            </ul>
-                        </lightning:tile>
-                    </li>
-                </ul>
-
-            </aura:iteration>
-
-        <aura:set attribute="else">
-            <p> Please, try again! </p>
-
-        </aura:set>
-    </aura:if>
-
+    <!--Footer-->
+    <footer role="contentinfo" class="slds-p-around_large" style="width: 100%; bottom:0; position: relative; background-color:black; color:white; text-shadow: none;">
+        <div class="slds-grid slds-grid_align-spread">
+            <p class="slds-col">Salesforce Lightning Design System Example : 따릉이 조회 서비스</p>
+            <p class="slds-col">&copy; juicyjerry</p>
+        </div>
+    </footer>
 
     <!-- <button class="slds-button slds-button_icon slds-button_icon-inverse" title="Search">
         <svg class="slds-button__icon" aria-hidden="true">

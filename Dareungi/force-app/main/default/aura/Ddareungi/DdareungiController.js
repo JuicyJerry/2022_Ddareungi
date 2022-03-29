@@ -28,18 +28,29 @@
         console.log("Input has recieved the focus");
         component.set("v.textValue", null);
     },
-    
+
+    // function automatic called by aura:waiting event  
     showSpinner: function(component, event, helper) {
-        component.set("v.spinner", false);
-
-        setTimeout(() => {
-            console.log("counting!");
-        }, 2000)
-        
-        this.hideSpinner();
+        // make Spinner attribute true for displaying loading spinner 
+        component.set("v.spinner", true); 
     },
-
-    hideSpinner: function(component, event, helper) {
-        component.set("v.spinner", true);
+        
+    // function automatic called by aura:doneWaiting event 
+    hideSpinner : function(component,event,helper){
+        // make Spinner attribute to false for hiding loading spinner    
+        component.set("v.spinner", false);
     }
+    // showSpinner: function(component, event, helper) {
+    //     component.set("v.spinner", false);
+
+    //     setTimeout(() => {
+    //         console.log("counting!");
+    //     }, 2000)
+        
+    //     this.hideSpinner();
+    // },
+
+    // hideSpinner: function(component, event, helper) {
+    //     component.set("v.spinner", true);
+    // }
 })
